@@ -44,12 +44,13 @@ KROK 2 (w tym pliku - `zadanie.py`):
 #     cena = (9*ilosc)*(1 - rabat_procent*0.01)
 #   return round(cena,2)
 
+# DRY - Don't Repeat Yourself
+# S.O.L.I.D programowanie
 def oblicz_koszt(rodzaj: str, ilosc: int, rabat_procent: int = 0) -> float:
-
   cennik = {
     'czarna': 8,
     'zielona': 10,
-    "czerwona": 12
+    'czerwona': 12
   }
 
   cena_produktu = cennik.get(rodzaj, 9.0)
