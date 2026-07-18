@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "pytest_kalkulator": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py",
+        "pytest_kalkulator_add_positive": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py::test_add_positive",
+        "pytest_kalkulator_add_negative": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py::test_add_negative"
+    }
+}

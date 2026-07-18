@@ -21,8 +21,6 @@
 # python -m pytest -v test_kalkulator.py::test_add_positive test_kalkulator2.py::test_add_negative
 
 
-
-
 from kalkulator import add
 
 # konwencja nazwy funkcji testowej test_<nazwa_testowanej_funkcji>
