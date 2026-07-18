@@ -52,7 +52,7 @@ def oblicz_koszt(rodzaj: str, ilosc: int, rabat_procent: int = 0) -> float:
     "czerwona": 12
   }
 
-  cena = (cennik.get(rodzaj, 9.0)*ilosc)*(1 - rabat_procent*0.01)
-  return round(cena,2)
-
+  cena_produktu = cennik.get(rodzaj, 9.0)
+  cena_finalna = (cena_produktu * ilosc) * (1 - rabat_procent * 0.01)
+  return round(cena_finalna, 2)
 
