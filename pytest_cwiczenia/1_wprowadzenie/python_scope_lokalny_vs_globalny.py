@@ -10,3 +10,6 @@ def print_scope_xd():
 print(xd)  # scope globalnego
 print_scope_xd()  # scope lokalny
 print(xd)  # scope globalnego
+
+wynik = sum([1, 2, 3, 4])
+print(wynik)

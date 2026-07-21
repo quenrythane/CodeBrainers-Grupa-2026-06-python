@@ -19,7 +19,7 @@ Uruchomienie testów z terminala:
 python -m pytest -v pytest_cwiczenia/pytest_cwiczenie.py
 """
 
-import pytest
+
 
 
 class KoszykSklepowy:
@@ -30,7 +30,9 @@ class KoszykSklepowy:
         self.produkty.append({"nazwa": nazwa, "cena": cena})
 
     def pobierz_suma(self) -> float:
-        return sum(p["cena"] for p in self.produkty)
+        # produkt = {"nazwa": "Chleb", "cena": 4.50}
+        lista_z_cenami = [produkt["cena"] for produkt in self.produkty]
+        return sum(lista_z_cenami)
 
     def czysc(self):
         self.produkty.clear()
@@ -39,12 +41,25 @@ class KoszykSklepowy:
 # ==============================================================================
 # MIEJSCE NA TWOJE ROZWIĄZANIE (Zadanie dla Junior Testera):
 # ==============================================================================
+import pytest
 
 # TODO 1: Stwórz fixturę `koszyk` zwracającą instancję KoszykSklepowy
-# @pytest.fixture
-# def koszyk():
-#     ...
+@pytest.fixture
+def koszyk():
+    return KoszykSklepowy()
+
 
 # TODO 2: Napisz test_dodawanie_produktow(koszyk)
+def test_dodawanie_psroduktow(koszyk):
+    koszyk.dodaj_produkt("Chleb", 4.50)
+    koszyk.dodaj_produkt("Mleko", 3.20)
+    assert koszyk.pobierz_suma() == 7.70
+    assert len(koszyk.produkty) == 2
+
 
 # TODO 3: Napisz test_czyszczenie_koszyka(koszyk)
+def test_czyszczenie_koszyka(koszyk):
+    koszyk.dodaj_produkt("Chleb", 4.50)
+    koszyk.czysc()
+    assert koszyk.pobierz_suma() == 0
+    assert len(koszyk.produkty) == 0
