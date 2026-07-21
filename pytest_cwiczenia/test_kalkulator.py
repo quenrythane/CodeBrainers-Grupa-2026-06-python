@@ -22,10 +22,10 @@
 
 
 from kalkulator import add, odejmowanie
+import pytest
 
 # konwencja nazwy funkcji testowej test_<nazwa_testowanej_funkcji>
 # print("\nxd xd xd")
-
 
 
 def test_add_positive():
@@ -42,9 +42,25 @@ def test_add_negative():
     assert add(-2, 2) == 0
     assert add(-2, 20) == 18
 
-def test_odejmowanie():
+
+
+@pytest.fixture
+def moj_wspanialy_fixture():
+    print("\npoczątek testu")
+    yield
+    print("\nkoniec testu")
+
+
+def test_odejmowanie(moj_wspanialy_fixture):
+
+    print("\npoczątek testu")
+
     assert odejmowanie(5, 2) == 3
     assert odejmowanie(0, 2) == -2
     assert odejmowanie(0, 0) == 0
     assert odejmowanie(10, 0.5) == 9.5
+
+
+    print("\nkoniec testu")
+
 
