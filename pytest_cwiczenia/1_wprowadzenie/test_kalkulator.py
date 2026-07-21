@@ -1,3 +1,4 @@
+
 # pip install pytest  <- instalacja
 # python -m pytest --version  <- sprawdzenie wersji
 
@@ -62,5 +63,6 @@ def test_odejmowanie(moj_wspanialy_fixture):
 
 
     print("\nkoniec testu")
+
 
 
