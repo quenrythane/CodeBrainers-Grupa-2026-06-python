@@ -4,8 +4,14 @@ import logging
 
 
 # pytest-html
+# pip install pytest-html
 # na końcu komendy uruchomiena testu --html=report.html --self-contained-html
 # np.: python -m pytest -v -m register --html=report.html --self-contained-html
+
+# logging
+# pip install logging
+# na końcu komendy uruchomiena testu --log-cli-level=INFO
+# np.: python -m pytest -vs -m wip --log-cli-level=INFO
 
 # python -m pytest -v -m register -> odpala testy z mark.register
 # python -m pytest -v -m "smoke and register" odpala testy z mark.register i odpala testy z mark.smoke
@@ -30,11 +36,14 @@ def test_add_positive():
     assert add(2, 2) == 4
     assert add(0, 2) == 2
 
-@pytest.mark.register
+@pytest.mark.wip
 def test_2(logger):
     logger.info("Running test_2")
     assert True
     logger.info("Finished test_2")
+    logger.debug("mój customowy debug")
+    logger.warning("mój customowy warning")
+    logger.error("mój customowy error")
 
 
 @pytest.mark.skip(reason="test w trakcie developmentu")

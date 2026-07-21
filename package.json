@@ -2,6 +2,7 @@
     "scripts": {
         "pytest_kalkulator": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py",
         "pytest_kalkulator_add_positive": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py::test_add_positive",
-        "pytest_kalkulator_add_negative": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py::test_add_negative"
+        "pytest_kalkulator_add_negative": "python -m pytest -v pytest_cwiczenia/test_kalkulator.py::test_add_negative",
+        "pytest_selectet_mark_with_html_report": "python -m pytest -m <@mark> -vs --log-cli-level=INFO --html=report.html --self-contained-html"
     }
 }
