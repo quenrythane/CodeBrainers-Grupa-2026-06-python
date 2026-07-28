@@ -1,9 +1,11 @@
 import requests
+import pytest
 
 
 BASE_URL = "http://127.0.0.1:8000/api"
 BASE_URL = "http://localhost:8000/api"
 global employee_id
+employee_id = 2
 
 
 def test_get_health():
@@ -19,6 +21,7 @@ def test_get_health():
     except requests.exceptions.RequestException as e:
         print("Wystąpił błąd podczas wysyłania żądania:", e)
 
+@pytest.mark.create_employee
 def test_post_create_employee():
     # AAA
     # ARRANGE
@@ -28,13 +31,7 @@ def test_post_create_employee():
         'Accept': '*/*',
     }
 
-    payload = {
-        "name": "Cezary",
-        "salary": 3000,
-        "age": 30,
-        "position": "Junior QA",
-        "on_leave": False
-    }
+    payload = payload_data
 
     # ACT
     response = requests.post(URL_POST_EMPLOYEES, headers=headers, json=payload)
@@ -43,11 +40,11 @@ def test_post_create_employee():
 
     # ASSERT
     assert response.status_code == 200
-    assert response_body["name"] == "Cezary"
-    assert response_body["salary"] == 3000
-    assert response_body["age"] == 30
-    assert response_body["position"] == "Junior QA"
-    assert response_body["on_leave"] == False
+    assert response_body["name"] == payload_data["name"]
+    assert response_body["salary"] == payload_data["salary"]
+    assert response_body["age"] == payload_data["age"]
+    assert response_body["position"] == payload_data["position"]
+    assert response_body["on_leave"] == payload_data["on_leave"]
 
 
 def test_put_update_employee():
@@ -78,4 +75,17 @@ def test_put_update_employee():
     assert response_body["age"] == 30
     assert response_body["position"] == "Junior QA"
     assert response_body["on_leave"] == True
+
+
+def test_delete_employee():
+    # ARRANGE
+    URL_DELETE_EMPLOYEES = f"{BASE_URL}/employees/{employee_id}"
+
+    # ACT
+    response = requests.delete(URL_DELETE_EMPLOYEES)
+
+    # ASSERT
+    response_body = response.json()
+    assert response.status_code == 200
+    print(response_body)
 
