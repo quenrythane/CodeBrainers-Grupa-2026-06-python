@@ -4,7 +4,7 @@ import pytest
 
 
 
-@pytest.mark.xd
+@pytest.mark.auth
 def test_auth_token():
     global token
     """Fixture pobierający token autoryzacyjny (accessToken) dla domyślnego użytkownika."""
@@ -24,7 +24,7 @@ def test_auth_token():
     print(token)
 
 
-@pytest.mark.xd
+@pytest.mark.auth
 def test_get_user():
     global token
     url = "https://dummyjson.com/auth/me"
