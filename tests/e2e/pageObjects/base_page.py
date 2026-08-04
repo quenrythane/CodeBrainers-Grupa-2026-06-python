@@ -40,7 +40,7 @@ class BasePage:
             timeout=2,
             poll_frequency=0.5
         ).until(EC.visibility_of_element_located(self.TABLE_ROW_LOCATOR))
-        return table_row[-1]
+        return self.driver.find_elements(*self.TABLE_ROW_LOCATOR)[-1]
 
     def get_table_row_data(self, table_row):
         return table_row.find_elements(*self.TABLE_CELL_LOCATOR)
