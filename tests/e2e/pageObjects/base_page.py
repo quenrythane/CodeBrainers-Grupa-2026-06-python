@@ -25,6 +25,15 @@ class BasePage:
     TABLE_ROW_LOCATOR = (By.TAG_NAME, "tr")
     TABLE_CELL_LOCATOR = (By.TAG_NAME, "td")
 
+    def fill_name_input(self, name_data):
+        self.driver.find_element(*self.NAME_INPUT_LOCATOR).send_keys(name_data)
+
+    def fill_salary_input(self, salary_data):
+        self.driver.find_element(*self.SALARY_INPUT_LOCATOR).send_keys(salary_data)
+
+    def fill_age_input(self, age_data):
+        self.driver.find_element(*self.AGE_INPUT_LOCATOR).send_keys(age_data)
+
     def fill_employee_form(self, user_data):
         self.driver.find_element(*self.NAME_INPUT_LOCATOR).send_keys(user_data.name)
         self.driver.find_element(*self.SALARY_INPUT_LOCATOR).send_keys(user_data.salary)

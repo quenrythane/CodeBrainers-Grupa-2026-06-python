@@ -28,13 +28,14 @@ def hello_fixture():
 
 @pytest.fixture
 def driver():
-    URL = "http://127.0.0.1:8000/"
     options = webdriver.ChromeOptions()
-    # options.add_argument("--start-maximized")
+    options.add_argument("--start-maximized")
+    options.add_argument("--disable-notifications")
+    options.add_argument("--popup-blocker-enable")
+
     # options.add_argument("--headless=new")
     driver = webdriver.Chrome(options=options)
     # driver.implicitly_wait(2)
-    driver.get(URL)
     yield driver
     driver.quit()
 
